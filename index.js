@@ -22,4 +22,37 @@ client.on('message', message => {
     }
 });
 
+
+client.on("message", message => {
+    if(message.content === `hi`) {
+        message.reply('Hello')
+    } else if(message.content === 'Hi') {
+        message.reply('Hello')
+    } else if(message.content === 'helo') {
+        message.reply('Helo') 
+    } else if(message.content === 'hola') {
+        message.reply('Hola')
+    } else if(message.content === 'fuck') {
+        message.reply('No bad words usage')
+        message.delete()
+    }
+
+    if(message.content === '$say') {
+        let saymessage = args.add(" ")
+        message.channel.send(saymessage)
+    }
+
+    if(message.content === 'plz') {
+        message.react("🥺")
+        message.channel.send("🥺")
+        message.channel.send("Please...")
+    }
+
+    if(message.content === 'please') {
+        message.react("🥺")
+        message.channel.send("🥺")
+        message.channel.send("Please...")
+    }
+
+
 client.login(process.env.token)
