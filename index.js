@@ -20,11 +20,8 @@ client.on('message', message => {
         .setDescription("My Commands: ``faq`` , ``ping`` , ``beep``")
         message.channel.send(embed)
     }
-});
-
-
-client.on("message", message => {
-    if(message.content === `hi`) {
+    
+       if(message.content === `hi`) {
         message.reply('Hello')
     } else if(message.content === 'Hi') {
         message.reply('Hello')
@@ -54,5 +51,7 @@ client.on("message", message => {
         message.channel.send("Please...")
     }
 
+    
+});
 
 client.login(process.env.token)
