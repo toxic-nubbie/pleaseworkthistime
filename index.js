@@ -34,9 +34,11 @@ client.on('message', message => {
         message.delete()
     }
 
-    if(message.content === '$say') {
-        let saymessage = args.join(" ")
-        message.channel.send(saymessage)
+    if(message.content === 'welcomemsg') {
+       const embed = new Discord.MessageEmbed()
+       .setTitle("__**Welcome To The Squad!**__")
+       .setDescription("``` ```\n**What was that? - Don't get confused it was just to verify you...\n``` ```\nIf that was verification then what is this? - This is for you to join the squad... and if you will not join then you won't be able to view the rest of the server..\n``` ```\nIs it any kind of like if I join this squad I need to pay or something like that will happen? - Never Its fully free and this is just a squad not a clan or something like that of a specific game.. this is a place where there will be different kind of gaming events and much fun!\n\n``` ```\n\nready to join the fun? But wondering what to do to join? - Simple as hell xD just react on the  below!**")
+        message.channel.send(embed)
     }
 
     if(message.content === 'plz') {
