@@ -35,7 +35,7 @@ client.on('message', message => {
     }
 
     if(message.content === '$say') {
-        let saymessage = args.add(" ")
+        let saymessage = args.join(" ")
         message.channel.send(saymessage)
     }
 
