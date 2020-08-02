@@ -32,6 +32,9 @@ client.on('message', message => {
     } else if(message.content === 'fuck') {
         message.reply('No bad words usage')
         message.delete()
+    } else if(message.content === 'saale') {
+       message.reply('No bad words usage')
+       message.delete()
     }
 
     if(message.content === 'welcomemsg') {
@@ -41,7 +44,13 @@ client.on('message', message => {
        .setThumbnail('https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169')
        .setImage('https://tenor.com/view/dancing-youre-welcome-welcome-gif-13987792')
         message.channel.send(embed)
-    }
+    } else if(message.content === 'squadjoinmsg') {
+       const embed = new Discord.MessageEmbed()
+        .setTitle('Hey verified user')
+        .setDescription("confused that what this is for? when you are already verified?\ndon't worry this is just for joining the squad and the fun, and its fully free and react with the one below and then again remove reacion to confirm!")
+        .setFooter(`https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169`',made by SquidBrain')
+       message.channel.send(embed)
+       }
 
     if(message.content === 'plz') {
         message.react("🥺")
