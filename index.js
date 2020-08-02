@@ -38,7 +38,7 @@ client.on('message', message => {
        const embed = new Discord.MessageEmbed()
        .setTitle("__**Welcome To The Squad!**__")
        .setDescription("**\n\nYou need to be verified and for that type: ``i agree``**")
-       .setThumbnail('https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169'{dynamic = true})
+       .setThumbnail('https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169')
        .setImage('https://tenor.com/view/dancing-youre-welcome-welcome-gif-13987792')
         message.channel.send(embed)
     }
