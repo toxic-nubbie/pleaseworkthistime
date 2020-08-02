@@ -7,7 +7,7 @@ client.once('ready', () => {
     client.user.setActivity('to ns.faq', {type: "LISTENING"})
 });
 
-client.on("message", message => {
+client.on('message', message => {
     if(message.content === `${prefix}ping`) {
         message.reply("Pong!")
     } else if(message.content.startsWith(prefix + beep)) {
@@ -21,23 +21,23 @@ client.on("message", message => {
         message.channel.send(embed)
     }
     
-      if(message.content === `${prefix}hi`) {
+      if(message.content === `hi`) {
         message.reply('Hello')
-    } else if(message.content === `${prefix}Hi`) {
+    } else if(message.content === `Hi`) {
         message.reply('Hello')
-    } else if(message.content === `${prefix}helo`) {
+    } else if(message.content === `helo`) {
         message.reply('Helo') 
-    } else if(message.content === `${prefix}hola`) {
+    } else if(message.content === `hola`) {
         message.reply('Hola')
-    } else if(message.content === `${prefix}fuck`) {
+    } else if(message.content === `fuck`) {
         message.reply('No bad words usage')
         message.delete()
-    } else if(message.content === `${prefix}saale`) {
+    } else if(message.content === `saale`) {
        message.reply('No bad words usage')
        message.delete()
     }
 
-    if(message.content === '$welcomemsg') {
+    if(message.content === 'welcomemsg') {
        const embed = new Discord.MessageEmbed()
        .setTitle("__**Welcome To The Squad!**__")
        .setDescription("**\n\nYou need to be verified and for that type: ``i agree``**")
@@ -46,7 +46,7 @@ client.on("message", message => {
        message.channel.send(embed)
     } 
     
-    if(message.content === '$squadjoinmsg') {
+    if(message.content === 'squadjoinmsg') {
        const embed = new Discord.MessageEmbed()
         .setTitle('Hey verified user')
         .setDescription("confused that what this is for? when you are already verified?\ndon't worry this is just for joining the squad and the fun, and its fully free and react with the one below and then again remove reacion to confirm!")
