@@ -8,37 +8,36 @@ client.once('ready', () => {
 });
 
 client.on("message", message => {
- if(message.author.bot) {
-    if(message.content.startsWith(prefix + ping)) {
+    if(message.content === `${prefix}ping`) {
         message.reply("Pong!")
     } else if(message.content.startsWith(prefix + beep)) {
         message.reply("Boop!")
     }
 
-    if(message.content.startsWith(prefix + faq)) {
+    if(message.content === `${prefix}faq`) {
         const embed = new Discord.MessageEmbed()
         .setTitle(`Hey ${message.author.username}`)
         .setDescription("My Commands: ``faq`` , ``ping`` , ``beep``")
         message.channel.send(embed)
     }
     
-       if(message.content.startsWith(hi)) {
+      if(message.content === `${prefix}hi`) {
         message.reply('Hello')
-    } else if(message.content.startsWith(Hi)) {
+    } else if(message.content === `${prefix}Hi`) {
         message.reply('Hello')
-    } else if(message.content.startsWith(helo)) {
+    } else if(message.content === `${prefix}helo`) {
         message.reply('Helo') 
-    } else if(message.conten.startsWith(hola)) {
+    } else if(message.content === `${prefix}hola`) {
         message.reply('Hola')
-    } else if(message.content.startsWith(fuck)) {
+    } else if(message.content === `${prefix}fuck`) {
         message.reply('No bad words usage')
         message.delete()
-    } else if(message.content.startsWith(saale)) {
+    } else if(message.content === `${prefix}saale`) {
        message.reply('No bad words usage')
        message.delete()
     }
 
-    if(message.content.startsWith($welcomemsg)) {
+    if(message.content === '$welcomemsg') {
        const embed = new Discord.MessageEmbed()
        .setTitle("__**Welcome To The Squad!**__")
        .setDescription("**\n\nYou need to be verified and for that type: ``i agree``**")
@@ -47,7 +46,7 @@ client.on("message", message => {
        message.channel.send(embed)
     } 
     
-    if(message.content.startsWith($squadjoinmsg)) {
+    if(message.content === '$squadjoinmsg') {
        const embed = new Discord.MessageEmbed()
         .setTitle('Hey verified user')
         .setDescription("confused that what this is for? when you are already verified?\ndon't worry this is just for joining the squad and the fun, and its fully free and react with the one below and then again remove reacion to confirm!")
@@ -56,19 +55,17 @@ client.on("message", message => {
        message.channel.send(embed)
        }
 
-    if(message.content.startsWith(plz)) {
+    if(message.content === 'plz') {
         message.react("🥺")
         message.channel.send("🥺")
         message.channel.send("Please...")
     }
 
-    if(message.content.startsWith(please)) {
+    if(message.content === 'please') {
         message.react("🥺")
         message.channel.send("🥺")
         message.channel.send("Please...")
-    }
- }
-    
+    }    
 });
 
 client.login(process.env.token)
