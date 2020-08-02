@@ -7,7 +7,7 @@ client.once('ready', () => {
     client.user.setActivity('to ns.faq', {type: "LISTENING"})
 });
 
-client.on('message', message => {
+client.on("message", message => {
  if(message.author.bot) {
     if(message.content.startsWith(prefix + ping)) {
         message.reply("Pong!")
