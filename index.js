@@ -10,7 +10,7 @@ client.once('ready', () => {
 client.on('message', message => {
     if(message.content === `${prefix}ping`) {
         message.reply("Pong!")
-    } else if(message.content.startsWith(prefix + beep)) {
+    } else if(message.content === `${prefix}beep`) {
         message.reply("Boop!")
     }
 
