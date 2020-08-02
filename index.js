@@ -48,7 +48,8 @@ client.on('message', message => {
        const embed = new Discord.MessageEmbed()
         .setTitle('Hey verified user')
         .setDescription("confused that what this is for? when you are already verified?\ndon't worry this is just for joining the squad and the fun, and its fully free and react with the one below and then again remove reacion to confirm!")
-        .setFooter(`https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169`',made by SquidBrain')
+        .setThumbnail('https://media.discordapp.net/attachments/739135388236644403/739406970343260250/NoobSquad1.png?width=169&height=169')
+        .setFooter('made by SquidBrain')
        message.channel.send(embed)
        }
 
