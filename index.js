@@ -10,14 +10,14 @@ client.once('ready', () => {
 client.on('message', async message => {
  
   //This reads the first part of your message behind your prefix to see which command you want to use.
-  var command = message.content.toLowerCase().slice(settings.prefix.length).split(' ')[0];
+  var command = message.content.toLowerCase().slice(prefix.length).split(' ')[0];
  
   //These are the arguments behind the commands.
   var args = message.content.split(' ').slice(1);
  
   //If the message does not start with your prefix return.
   //If the user that types a message is a bot account return.
-  if (!message.content.startsWith(settings.prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) return;
  
   if (command === 'balance') {
  
