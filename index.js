@@ -17,7 +17,6 @@ client.on('message', message => {
  
   //If the message does not start with your prefix return.
   //If the user that types a message is a bot account return.
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
  
   if (message.content === 'balance') {
  
