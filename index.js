@@ -7,10 +7,10 @@ client.once('ready', () => {
     client.user.setActivity('to ns.faq', {type: "LISTENING"})
 });
 
-client.on('message', async message => {
+client.on('message', message => {
  
   //This reads the first part of your message behind your prefix to see which command you want to use.
-  var command = message.content.toLowerCase().slice(prefix.length).split(' ')[0];
+ 
  
   //These are the arguments behind the commands.
   var args = message.content.split(' ').slice(1);
@@ -19,20 +19,20 @@ client.on('message', async message => {
   //If the user that types a message is a bot account return.
   if (!message.content.startsWith(prefix) || message.author.bot) return;
  
-  if (command === 'balance') {
+  if (message.content === 'balance') {
  
-    var output = await eco.FetchBalance(message.author.id)
+    var output = eco.FetchBalance(message.author.id)
     message.channel.send(`Hey ${message.author.tag}! You own ${output.balance} coins.`);
   }
  
-  if (command === 'daily') {
+  if (message.content === 'daily') {
  
-    var output = await eco.Daily(message.author.id)
+    var output = eco.Daily(message.author.id)
     //output.updated will tell you if the user already claimed his/her daily yes or no.
  
     if (output.updated) {
  
-      var profile = await eco.AddToBalance(message.author.id, 100)
+      var profile = eco.AddToBalance(message.author.id, 100)
       message.reply(`You claimed your daily coins successfully! You now own ${profile.newbalance} coins.`);
  
     } else {
@@ -41,15 +41,15 @@ client.on('message', async message => {
  
   }
  
-  if (command === 'resetdaily') {
+  if (message.content === 'resetdaily') {
  
-    var output = await eco.ResetDaily(message.author.id)
+    var output = eco.ResetDaily(message.author.id)
  
     message.reply(output) //It will send 'Daily Reset.'
  
   }
  
-  if (command === 'leaderboard') {
+  if (message.content === 'leaderboard') {
  
     //If you use discord-economy guild based you can use the filter() function to only allow the database within your guild
     //(message.author.id + message.guild.id) can be your way to store guild based id's
@@ -71,9 +71,9 @@ client.on('message', async message => {
         filter: x => x.balance > 50 //Only allows people with more than 100 balance ( Totally Optional )
       }).then(async users => { //make sure it is async
  
-        if (users[0]) var firstplace = await client.fetchUser(users[0].userid) //Searches for the user object in discord for first place
-        if (users[1]) var secondplace = await client.fetchUser(users[1].userid) //Searches for the user object in discord for second place
-        if (users[2]) var thirdplace = await client.fetchUser(users[2].userid) //Searches for the user object in discord for third place
+        if (users[0]) var firstplace = client.fetchUser(users[0].userid) //Searches for the user object in discord for first place
+        if (users[1]) var secondplace = client.fetchUser(users[1].userid) //Searches for the user object in discord for second place
+        if (users[2]) var thirdplace = client.fetchUser(users[2].userid) //Searches for the user object in discord for third place
  
         message.channel.send(`My leaderboard:
  
@@ -86,7 +86,7 @@ client.on('message', async message => {
     }
   }
  
-  if (command === 'transfer') {
+  if (message.content === 'transfer') {
  
     var user = message.mentions.users.first()
     var amount = args[1]
@@ -94,46 +94,16 @@ client.on('message', async message => {
     if (!user) return message.reply('Reply the user you want to send money to!')
     if (!amount) return message.reply('Specify the amount you want to pay!')
  
-    var output = await eco.FetchBalance(message.author.id)
+    var output = eco.FetchBalance(message.author.id)
     if (output.balance < amount) return message.reply('You have fewer coins than the amount you want to transfer!')
  
-    var transfer = await eco.Transfer(message.author.id, user.id, amount)
+    var transfer = eco.Transfer(message.author.id, user.id, amount)
     message.reply(`Transfering coins successfully done!\nBalance from ${message.author.tag}: ${transfer.FromUser}\nBalance from ${user.tag}: ${transfer.ToUser}`);
   }
  
-  if (command === 'coinflip') {
+
  
-    var flip = args[0] //Heads or Tails
-    var amount = args[1] //Coins to gamble
- 
-    if (!flip || !['heads', 'tails'].includes(flip)) return message.reply('Please specify the flip, either heads or tails!')
-    if (!amount) return message.reply('Specify the amount you want to gamble!')
- 
-    var output = await eco.FetchBalance(message.author.id)
-    if (output.balance < amount) return message.reply('You have fewer coins than the amount you want to gamble!')
- 
-    var gamble = await eco.Coinflip(message.author.id, flip, amount).catch(console.error)
-    message.reply(`You ${gamble.output}! New balance: ${gamble.newbalance}`)
- 
-  }
- 
-  if (command === 'dice') {
- 
-    var roll = args[0] //Should be a number between 1 and 6
-    var amount = args[1] //Coins to gamble
- 
-    if (!roll || ![1, 2, 3, 4, 5, 6].includes(parseInt(roll))) return message.reply('Specify the roll, it should be a number between 1-6')
-    if (!amount) return message.reply('Specify the amount you want to gamble!')
- 
-    var output = eco.FetchBalance(message.author.id)
-    if (output.balance < amount) return message.reply('You have fewer coins than the amount you want to gamble!')
- 
-    var gamble = await eco.Dice(message.author.id, roll, amount).catch(console.error)
-    message.reply(`The dice rolled ${gamble.dice}. So you ${gamble.output}! New balance: ${gamble.newbalance}`)
- 
-  }
- 
-  if (command == 'delete') { //You want to make this command admin only!
+ /* if (command == 'delete') { //You want to make this command admin only!
  
     var user = message.mentions.users.first()
     if (!user) return message.reply('Please specify a user I have to delete in my database!')
@@ -188,7 +158,7 @@ You now own :money_with_wings: ${output.balance}`)
     message.reply(`You ${gamble.output}! New balance: ${gamble.newbalance}`)
  
   }
- 
+ */
 });
 
 client.login(process.env.token)
